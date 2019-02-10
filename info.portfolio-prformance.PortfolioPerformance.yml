@@ -10,7 +10,7 @@ finish-args:
   - --socket=wayland
   - --share=network
   - --filesystem=home
-  - --env=PATH=/usr/bin:/app/bin:/app/jre/bin
+  - --env=PATH=/usr/bin:/app/jre/bin
 modules:
   - name: openjdk
     buildsystem: simple
@@ -19,11 +19,14 @@ modules:
   - name: PortfolioPerformance
     buildsystem: simple
     build-commands:
-      - tar -xf PortfolioPerformance-0.38.0-linux.gtk.x86_64.tar.gz
       - mkdir /app/portfolio
-      - cp -r portfolio/* /app/portfolio
+      - tar -xf PortfolioPerformance-*.tar.gz --directory=/app/portfolio --strip-components=1
       - chmod a+x /app/portfolio/PortfolioPerformance
+      - install -Dm644 /app/portfolio/icon.xpm /app/share/icons/hicolor/256x256/apps/info.portfolioperformance.PortfolioPerformance.xpm
+      - install -Dm644 info.portfolioperformance.PortfolioPerformance.desktop /app/share/applications/info.portfolioperformance.PortfolioPerformance.desktop
     sources:
       - type: file
         url: https://github.com/buchen/portfolio/releases/download/0.38.0/PortfolioPerformance-0.38.0-linux.gtk.x86_64.tar.gz
         sha256: 75fea9b62f4f86384d26b45b36f2b1b5d01a040b20b112725098b5e373004a22
+      - type: file
+        path: info.portfolioperformance.PortfolioPerformance.desktop

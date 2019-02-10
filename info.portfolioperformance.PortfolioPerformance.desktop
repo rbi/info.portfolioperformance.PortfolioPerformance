@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Portfolio Performance
+Exec=/app/portfolio/PortfolioPerformance
+Terminal=false
+Icon=info.portfolioperformance.PortfolioPerformance
+Type=Application
+Categories=Office;Finance
